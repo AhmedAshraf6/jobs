@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { HashRouter, Routes, HashRouter, Route } from 'react-router-dom';
 import { Landing, Register, Error, ProtectedRoute } from './pages';
 import {
   Profile,
@@ -12,7 +12,7 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 export default function App() {
   return (
-    <BrowserRouter>
+    <HashRouter>
       <Routes>
         <Route
           path='/'
@@ -32,6 +32,6 @@ export default function App() {
         <Route path='*' element={<Error />} />
       </Routes>
       <ToastContainer position='top-center' />
-    </BrowserRouter>
+    </HashRouter>
   );
 }
