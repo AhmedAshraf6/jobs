@@ -1,0 +1,38 @@
+import { FaSuitcaseRolling, FaCalendarCheck, FaBug } from 'react-icons/fa';
+import { useSelector } from 'react-redux';
+import StateItem from './StateItem';
+
+export default function StatsContainer() {
+  const { stats } = useSelector((store) => store.allJobs);
+  const defaultStats = [
+    {
+      title: 'pending applications',
+      count: stats.pending || 0,
+      icon: <FaSuitcaseRolling />,
+      color: 'text-[#e9b949]',
+      bcg: 'bg-[#fcefc7]',
+    },
+    {
+      title: 'interviews scheduled',
+      count: stats.interview || 0,
+      icon: <FaCalendarCheck />,
+      color: 'text-[#647acb]',
+      bcg: 'bg-[#e0e8f9]',
+    },
+    {
+      title: 'jobs declined',
+      count: stats.declined || 0,
+      icon: <FaBug />,
+      color: 'text-[#d66a6a]',
+      bcg: 'bg-[#ffeeee]',
+    },
+  ];
+
+  return (
+    <div className='grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-3'>
+      {defaultStats.map((item, index) => (
+        <StateItem key={index} {...item} />
+      ))}
+    </div>
+  );
+}
